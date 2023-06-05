@@ -23,6 +23,7 @@
 		android:layout_marginStart="@dimen/_10sdp"
 		android:layout_marginEnd="@dimen/_10sdp"
 		tools:text="90913154114"
+		android:visibility="gone"
 		android:textColor="@color/black"
 		android:gravity="left|center"
 		android:drawablePadding="@dimen/_10sdp"
@@ -32,6 +33,7 @@
 	<TextView
 		android:id="@+id/tvSimNumbersTwo"
 		android:layout_width="match_parent"
+		android:visibility="gone"
 		android:layout_marginStart="@dimen/_10sdp"
 		android:layout_marginEnd="@dimen/_10sdp"
 		tools:text="90913154114"
