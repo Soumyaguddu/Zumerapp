@@ -32,4 +32,8 @@
     <style name="Theme.Zumer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Zumer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CircularProgressBarStyle" parent="android:Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/custom_progress_bar</item>
+    </style>
 </resources>

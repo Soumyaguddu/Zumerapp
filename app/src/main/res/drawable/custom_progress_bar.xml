@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+	android:shape="ring"
+	android:useLevel="false"
+	android:innerRadiusRatio="2.7"
+	android:thicknessRatio="10.0">
+
+	<solid android:color="#FFFF00" /> <!-- Set the progress color (yellow) -->
+
+	<size
+		android:width="48dp"
+		android:height="48dp" />
+</shape>
+
+
