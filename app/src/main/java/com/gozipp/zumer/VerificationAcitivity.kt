@@ -1,16 +1,10 @@
 package com.gozipp.zumer
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.gozipp.zumer.databinding.ActivityVerificationAcitivityBinding
 import com.gozipp.zumer.utills.KeyboardUtils
 
@@ -30,12 +24,14 @@ class VerificationAcitivity : AppCompatActivity() {
         binding.llView.setOnClickListener {
             KeyboardUtils.hideKeyboard(this, it)
         }
-
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, AddPersonActivity::class.java))
+        }
     }
 
     private fun setOtpFocus() {
         val editTextList = listOf(
-          binding.editText1,
+            binding.editText1,
             binding.editText2,
             binding.editText3,
             binding.editText4,
@@ -45,7 +41,13 @@ class VerificationAcitivity : AppCompatActivity() {
 
         for (i in editTextList.indices) {
             editTextList[i].addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
@@ -62,8 +64,6 @@ class VerificationAcitivity : AppCompatActivity() {
 
                     val allTextFilled = editTextList.all { it.text.length == 1 }
                     binding.btnLogin.isSelected = allTextFilled
-
-
 
 
                 }

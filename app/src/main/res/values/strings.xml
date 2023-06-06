@@ -40,6 +40,9 @@ complete your account</string>
 	<string name="proceed">Proceed</string>
 	<string name="enter_the_otp">Enter the OTP</string>
 	<string name="resend_otp_in_12s">Resend OTP in 12s</string>
+	<string name="name">Name</string>
+	<string name="mobileNo">Phone No.</string>
+	<string name="date_of_birth">Birth Date</string>
 
 
 </resources>
