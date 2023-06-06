@@ -1,48 +1,47 @@
 <resources>
-	<string name="app_name">Zumer</string>
-	<string name="please_fill">Please fill your details below to\nadd your information</string>
-	<string name="signUp_header">Please fill your details below to
+    <string name="app_name">Zumer</string>
+    <string name="please_fill">Please fill your details below to\nadd your information</string>
+    <string name="signUp_header">Please fill your details below to
 complete your account</string>
-	<string name="first_name">First Name</string>
-	<string name="last_name">Last Name</string>
-	<string name="email">Email</string>
-	<string name="password">Password</string>
-	<string name="cpassword">Confirm password</string>
-	<string name="phone">Phone No.</string>
-	<string name="vehicleType">Vehicle Type</string>
-	<string name="address">Address</string>
-	<array name="vehicleType">
-		<item>--Select Vehicle Type --</item>
-		<item>Car</item>
-		<item>Bike</item>
-		<item>Taxi</item>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="cpassword">Confirm password</string>
+    <string name="phone">Phone No.</string>
+    <string name="vehicleType">Vehicle Type</string>
+    <string name="address">Address</string>
+    <array name="vehicleType">
+        <item>--Select Vehicle Type --</item>
+        <item>Car</item>
+        <item>Bike</item>
+        <item>Taxi</item>
 
 
-	</array>
-	<string name="title_activity_main2">MainActivity2</string>
-	<!-- Strings used for fragments for navigation -->
-	<string name="first_fragment_label">First Fragment</string>
-	<string name="second_fragment_label">Second Fragment</string>
-	<string name="next">Next</string>
-	<string name="previous">Previous</string>
+    </array>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
-	<string name="hello_first_fragment">Hello first fragment</string>
-	<string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-	<string name="title_activity_verification_acitivity">VerificationAcitivity</string>
-	<string name="let_s_get_started">Let\'s get started</string>
-	<string name="verify_your_account_using_otp">Verify your account using OTP</string>
-	<string name="or">Or</string>
-	<string name="continue_with">Continue with</string>
-	<string name="terms_of_service_text">By creating an account, you agree to our <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b>.</string>
-	<string name="terms_of_service">Terms of Service</string>
-	<string name="privacy_policy">Privacy Policy</string>
-	<string name="login">Login</string>
-	<string name="proceed">Proceed</string>
-	<string name="enter_the_otp">Enter the OTP</string>
-	<string name="resend_otp_in_12s">Resend OTP in 12s</string>
-	<string name="name">Name</string>
-	<string name="mobileNo">Phone No.</string>
-	<string name="date_of_birth">Birth Date</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_verification_acitivity">VerificationAcitivity</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="verify_your_account_using_otp">Verify your account using OTP</string>
+    <string name="or">Or</string>
+    <string name="continue_with">Continue with</string>
+    <string name="terms_of_service_text">By creating an account, you agree to our <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b>.</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="login">Login</string>
+    <string name="proceed">Proceed</string>
+    <string name="enter_the_otp">Enter the OTP</string>
+    <string name="resend_otp_in_12s">Resend OTP in 12s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
