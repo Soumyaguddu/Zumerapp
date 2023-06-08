@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gozipp.zumer.AddPersonActivity
+import com.gozipp.zumer.LoginActivity
 import com.gozipp.zumer.R
 import com.gozipp.zumer.databinding.FragmentRideBinding
 import com.gozipp.zumer.databinding.FragmentTripBinding
@@ -31,7 +32,7 @@ class TripFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnStarted.setOnClickListener {
-            startActivity(Intent(context, AddPersonActivity::class.java))
+            startActivity(Intent(context, LoginActivity::class.java))
         }
     }
 

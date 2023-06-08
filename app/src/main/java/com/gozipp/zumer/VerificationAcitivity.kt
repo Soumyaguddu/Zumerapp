@@ -1,9 +1,11 @@
 package com.gozipp.zumer
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.gozipp.zumer.Onboarding.Onboarding
 import com.gozipp.zumer.databinding.ActivityVerificationAcitivityBinding
@@ -26,7 +28,7 @@ class VerificationAcitivity : AppCompatActivity() {
             KeyboardUtils.hideKeyboard(this, it)
         }
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, Onboarding::class.java))
+            startActivity(Intent(this, AddPersonActivity::class.java))
         }
     }
 
@@ -64,6 +66,7 @@ class VerificationAcitivity : AppCompatActivity() {
                     }
 
                     val allTextFilled = editTextList.all { it.text.length == 1 }
+                   hideKeyboard()
                     binding.btnLogin.isSelected = allTextFilled
 
 
@@ -72,4 +75,10 @@ class VerificationAcitivity : AppCompatActivity() {
         }
 
     }
+    private  fun  hideKeyboard(){
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(binding.btnLogin, InputMethodManager.SHOW_IMPLICIT)
+    }
+
 }

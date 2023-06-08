@@ -14,7 +14,7 @@
 		<LinearLayout
 			android:id="@+id/llGradientTOP"
 			android:layout_width="match_parent"
-			android:layout_height="@dimen/_130sdp"
+			android:layout_height="@dimen/_150sdp"
 			android:background="@drawable/bg"
 			android:orientation="vertical">
 <LinearLayout
@@ -56,9 +56,9 @@
 				<ImageView
 					android:id="@+id/profileIcon"
 					android:layout_width="@dimen/_60sdp"
-					android:layout_height="match_parent"
+					android:layout_height="@dimen/_80sdp"
 					android:layout_gravity="center"
-					android:padding="@dimen/_10ssp"
+					android:padding="@dimen/_20ssp"
 					android:scaleType="centerCrop"
 					android:src="@drawable/user" />
 
@@ -73,10 +73,10 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="16dp"
-						tools:text="John Doe"
 						android:textColor="@color/white"
 						android:textSize="@dimen/_15ssp"
-						android:textStyle="bold" />
+						android:textStyle="bold"
+						tools:text="John Doe" />
 
 					<!-- Email -->
 					<TextView
@@ -84,9 +84,9 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="8dp"
-						tools:text="johndoe@example.com"
 						android:textColor="@color/white"
-						android:textSize="16sp" />
+						android:textSize="16sp"
+						tools:text="johndoe@example.com" />
 
 					<!-- Phone Number -->
 					<TextView
@@ -94,9 +94,17 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="8dp"
-						tools:text="123-456-7890"
 						android:textColor="@color/white"
-						android:textSize="16sp" />
+						android:textSize="16sp"
+						tools:text="123-456-7890" />
+					<TextView
+						android:id="@+id/dateYears"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						android:textColor="@color/white"
+						android:textSize="16sp"
+						tools:text="123-456-7890" />
 
 
 				</LinearLayout>
@@ -179,7 +187,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_margin="@dimen/_2ssp"
-					android:hint="date_of_birth"
+					android:hint="@string/date_of_birth"
 					android:visibility="visible">
 
 					<com.google.android.material.textfield.TextInputEditText
@@ -226,7 +234,7 @@
 					android:layout_margin="@dimen/_15sdp"
 					android:background="@drawable/bg_selected_view"
 					android:elevation="20dp"
-					android:text="@string/login"
+					android:text="@string/proceed"
 					android:textColor="@color/white"
 					android:textStyle="bold" />
 			</LinearLayout>
