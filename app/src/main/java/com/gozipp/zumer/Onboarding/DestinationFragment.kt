@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gozipp.zumer.R
+import com.gozipp.zumer.databinding.FragmentDestinationBinding
 
 class DestinationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
 
-
+    private lateinit var binding : FragmentDestinationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,7 +21,12 @@ class DestinationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_destination, container, false)
+        binding = FragmentDestinationBinding.inflate(layoutInflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }

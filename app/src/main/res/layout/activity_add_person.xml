@@ -125,7 +125,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_margin="@dimen/_2ssp"
-					android:hint="@string/name"
+					android:hint="name"
 					android:visibility="visible">
 
 					<com.google.android.material.textfield.TextInputEditText
@@ -161,7 +161,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_margin="@dimen/_2ssp"
-					android:hint="@string/mobileNo"
+					android:hint="mobileNo"
 					android:visibility="visible">
 
 					<com.google.android.material.textfield.TextInputEditText
@@ -179,7 +179,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_margin="@dimen/_2ssp"
-					android:hint="@string/date_of_birth"
+					android:hint="date_of_birth"
 					android:visibility="visible">
 
 					<com.google.android.material.textfield.TextInputEditText
