@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import com.gozipp.zumer.Onboarding.Onboarding
 import com.gozipp.zumer.databinding.ActivityVerificationAcitivityBinding
 import com.gozipp.zumer.utills.KeyboardUtils
 
@@ -25,7 +26,7 @@ class VerificationAcitivity : AppCompatActivity() {
             KeyboardUtils.hideKeyboard(this, it)
         }
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, AddPersonActivity::class.java))
+            startActivity(Intent(this, Onboarding::class.java))
         }
     }
 
