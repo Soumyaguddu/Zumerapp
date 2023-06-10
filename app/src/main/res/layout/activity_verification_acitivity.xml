@@ -84,9 +84,10 @@
                 android:textSize="@dimen/_16ssp"/>
 
             <TextView
+                android:id="@+id/tvMobileNumberView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="we have sent an OTP to 9874563210"
+                tools:text="We have sent an OTP to 9874563210"
                 android:textStyle="normal"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:textColor="@color/textColor"

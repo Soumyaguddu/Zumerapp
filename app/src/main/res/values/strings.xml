@@ -52,7 +52,29 @@ complete your account</string>
 	<string name="location">Location: To locate you and get rides easily</string>
 	<string name="phoneVerify">Phone: To verify your account and secure it</string>
 	<string name="allow_permissions">Allow Permissions</string>
-
-
+	<string name="home">Home</string>
+	<string name="payment_menu">Payment</string>
+	<string name="my_rides">My Rides</string>
+	<string name="invite_friends">Invite Friends</string>
+	<string name="power_pass">Power Pass</string>
+	<string name="notifications">Notifications</string>
+	<string name="insurance">Claims</string>
+	<string name="settings">Settings</string>
+	<string name="support_menu">Support</string>
+	<string name="current_location">Current Location</string>
+	<string name="enter_destination">Destination Location</string>
+	<string name="ride">Book Ride</string>
+	<string name="distance">distance</string>
+	<string name="total">total</string>
+	<string name="apply_coupon_code">Apply Coupon Code</string>
+	<string name="cash">Cash</string>
+	<string name="request_ride">Request Ride</string>
+	<string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCv_5zK9gY5rZfL36LspmVQIBXJ3wSrAzQ</string>
+	<string name="set_your_pickup_location_of_where_you_want_to_go">Set your pickup location of where you want to go.</string>
+	<string name="set_destination">Set Destination</string>
+	<string name="enjoy_your_trip">Enjoy Your Trip</string>
+	<string name="you_re_all_set_enjoy_your_trip_with_safety_comfort_and_security">You’re all set. Enjoy your trip with safety, comfort and security.</string>
+	<string name="add_dropoff_location_or_skip_it_if_you_are_unsure_select_vehicle_type_as_your_ride_and_book_it">Add dropoff location or skip it if you are unsure. Select vehicle type as your ride and book it.</string>
+	<string name="book_a_ride">Book a Ride</string>
 
 </resources>

@@ -11,4 +11,9 @@
 	<color name="hintTextColor">#BDBDBD</color>
 	<color name="textColor">#757171</color>
 	<color name="button_unselected">#BDBDBD</color>
+	<color name="GreenLight">#2ecc71</color>
+	<color name="GreenYellow">#adff2f</color>
+	<color name="Red">#ff0000</color>
+	<color name="Green">#008000</color>
+	<color name="BgDarkGray">#2f3238</color>
 </resources>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/parent"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".navDrawerFragments.HomeFragment">
+
+	<com.google.android.gms.maps.MapView
+		android:id="@+id/googleMap"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toTopOf="@id/currentLocationEdit"
+		app:layout_constraintTop_toTopOf="@id/parent" />
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/green_pin"
+		app:layout_constraintBottom_toBottomOf="@id/googleMap"
+		app:layout_constraintEnd_toEndOf="@id/googleMap"
+		app:layout_constraintStart_toStartOf="@id/googleMap"
+		app:layout_constraintTop_toTopOf="@id/googleMap" />
+
+	<LinearLayout
+		android:id="@+id/currentLocationEdit"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="10dp"
+		android:background="@drawable/edittext_bg"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toTopOf="@id/bottomLinearLayout">
+
+		<androidx.cardview.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_margin="15dp"
+			app:cardCornerRadius="20dp">
+
+			<ImageView
+				android:layout_width="15dp"
+				android:layout_height="15dp"
+				android:layout_gravity="center_vertical"
+				android:layout_margin="12dp"
+				android:src="@drawable/green_circle" />
+
+			<TextView
+				android:id="@+id/tvCurrentAddress"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginStart="40dp"
+
+				android:layout_marginEnd="10dp"
+				android:fontFamily="@font/productsansregular"
+				android:hint="@string/current_location"
+				android:textColor="@color/black"
+				android:textSize="15sp" />
+		</androidx.cardview.widget.CardView>
+
+		<androidx.cardview.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_margin="15dp"
+			app:cardCornerRadius="20dp">
+
+			<ImageView
+				android:layout_width="15dp"
+				android:layout_height="15dp"
+				android:layout_gravity="center_vertical"
+				android:layout_margin="12dp"
+				android:src="@drawable/red_circle" />
+
+			<TextView
+				android:id="@+id/tvEnterDestination"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginStart="40dp"
+				android:layout_marginEnd="10dp"
+				android:fontFamily="@font/productsansregular"
+				android:hint="@string/enter_destination"
+				android:textColor="@color/black"
+				android:textSize="15sp" />
+		</androidx.cardview.widget.CardView>
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/bottomLinearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="@dimen/_5sdp"
+		android:background="@color/purple_500"
+		android:gravity="center"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toBottomOf="@id/parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/bike" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="5dp"
+			android:fontFamily="@font/productsansregular"
+			android:text="@string/ride"
+			android:textColor="@color/white"
+			android:textSize="13sp" />
+
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

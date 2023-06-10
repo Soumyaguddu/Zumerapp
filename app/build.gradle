@@ -65,7 +65,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.34'
 
-    implementation 'com.github.florent37:runtime-permission-kotlin:1.1.2'
 
     implementation 'com.airbnb.android:lottie:3.3.0'
 
@@ -75,9 +74,9 @@ dependencies {
 
     implementation "com.google.android.gms:play-services-location:21.0.1"
 
-    implementation 'com.firebase:geofire-android:3.0.0'
+
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-    def anko_version = '0.10.0'
+
     def arch_version = '2.2.0-alpha01'
     def retrofit_version = "2.6.1"
     def coroutines = "1.1.1"
@@ -94,9 +93,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion"
 
-    //Anko
-    implementation "org.jetbrains.anko:anko-commons:$anko_version"
-
     //RoundedImage View
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
@@ -106,14 +102,10 @@ dependencies {
     //permission
     implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
 
-
-    //Dynamics Sizes
-    implementation 'com.github.MrNouri:DynamicSizes:1.0'
-
-    //CircleImageView
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-
 //circular img
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+
 
 }

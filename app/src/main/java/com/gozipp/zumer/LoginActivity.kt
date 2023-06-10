@@ -55,6 +55,14 @@ class LoginActivity : BaseActivity() {
             binding.btnLogin.isSelected = true
 
         }
+        binding.etEmail.afterTextChanged { s ->
+
+            if (binding.etEmail.text.toString().isNotEmpty()) {
+                return@afterTextChanged
+            }
+            binding.btnLogin.isSelected = true
+
+        }
         binding.etMobileNo.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 if (binding.etMobileNo.text.toString().length < 10) {
@@ -83,16 +91,21 @@ class LoginActivity : BaseActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            if (binding.etMobileNo.text.toString().trim().isEmpty()) {
+            if (binding.etMobileNo.text.toString().trim().isEmpty()&&binding.etEmail.text.toString().trim().isNotEmpty()) {
                 Toast.makeText(this, "Please provide your mobile no", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            } else if (binding.etMobileNo.text.toString().length < 10) {
+            } else if (binding.etMobileNo.text.toString().length < 10&&binding.etEmail.text.toString().trim().isNotEmpty()) {
                 Toast.makeText(this, "Please provide 10 digit mobile no", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else if (!isValidMobileNumber(binding.etMobileNo.text.toString())) {
                 Toast.makeText(this, "Please provide valid mobile no", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            if (binding.etEmail.text.toString().trim().isEmpty()&&binding.etMobileNo.text.toString().trim().isNotEmpty()) {
+                Toast.makeText(this, "Please provide your email id", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             checkLogin()
         }
         binding.imgGoogle.setOnClickListener {
@@ -203,7 +216,18 @@ class LoginActivity : BaseActivity() {
 
     private fun checkLogin() {
         binding.btnLogin.isSelected = true
-        startActivity(Intent(this, VerificationActivity::class.java))
+
+        val i = Intent(this, VerificationActivity::class.java).apply {
+            if (binding.etEmail.text.toString().isEmpty()){
+                putExtra("mobileNumber", binding.etMobileNo.text.toString())
+            }
+            else{
+                putExtra("mobileNumber", binding.etEmail.text.toString())
+            }
+
+        }
+        startActivity(i)
+
     }
 
     fun isValidMobileNumber(number: String): Boolean {

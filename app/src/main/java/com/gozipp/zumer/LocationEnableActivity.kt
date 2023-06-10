@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.gozipp.zumer.databinding.ActivityLocationEnableBinding
+import com.gozipp.zumer.utills.Constant.LOCATION_CHECK
 import com.gozipp.zumer.utills.PreferenceHelper
 import java.util.*
 
@@ -36,7 +37,7 @@ class LocationEnableActivity : AppCompatActivity() {
                 "location",
                 FINE_LOCATION_RO
             )
-            PreferenceHelper.writeBooleanToPreference("locationCheck", false)
+            PreferenceHelper.writeBooleanToPreference(LOCATION_CHECK, false)
         }
 
 
@@ -91,6 +92,7 @@ class LocationEnableActivity : AppCompatActivity() {
                     .show()
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
         when (requestCode) {

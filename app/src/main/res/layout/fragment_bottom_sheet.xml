@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:paddingBottom="15dp"
+	tools:context=".fragments.BottomSheetFragment">
+
+	<RelativeLayout
+		android:id="@+id/bottomRelative1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="15dp"
+		android:padding="10dp"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<ImageView
+			android:id="@+id/imgRideImage"
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:src="@drawable/bike_ride" />
+
+		<TextView
+			android:id="@+id/tvRideKro"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_toEndOf="@id/imgRideImage"
+			android:fontFamily="@font/productsansregular"
+			android:text="@string/ride"
+			android:textColor="@color/black"
+			android:textSize="15sp" />
+
+		<TextView
+			android:id="@+id/tvTotalDistance"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="15dp"
+			android:layout_marginTop="3dp"
+			android:layout_toEndOf="@id/tvRideKro"
+			android:text="@string/distance"
+			android:textColor="@color/black"
+			android:textSize="10sp" />
+
+		<TextView
+			android:id="@+id/tvIndianRupee"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="25dp"
+			android:layout_marginTop="7dp"
+			android:layout_toStartOf="@id/tvTotalRupee"
+			android:fontFamily="@font/indianrupee"
+			android:text="`"
+			android:textColor="@color/black"
+			android:textSize="15sp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:id="@+id/tvTotalRupee"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentEnd="true"
+			android:layout_marginEnd="15dp"
+			android:fontFamily="@font/opensansregular"
+			android:text="@string/total"
+			android:textColor="@color/black"
+			android:textSize="15sp"
+			android:textStyle="bold" />
+
+	</RelativeLayout>
+
+	<View
+		android:id="@+id/view1"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_margin="20dp"
+		android:layout_marginTop="5dp"
+		android:background="@color/grey"
+		app:layout_constraintTop_toBottomOf="@id/bottomRelative1" />
+
+	<RelativeLayout
+		android:id="@+id/bottomRelative2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="15dp"
+		android:padding="10dp"
+		app:layout_constraintTop_toBottomOf="@id/view1">
+
+		<ImageView
+			android:id="@+id/imgCouponImage"
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:src="@drawable/coupon" />
+
+		<TextView
+			android:id="@+id/tvApplyCoupon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="40dp"
+			android:fontFamily="@font/productsansregular"
+			android:text="@string/apply_coupon_code"
+			android:textSize="15sp" />
+
+	</RelativeLayout>
+
+	<View
+		android:id="@+id/view2"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_margin="20dp"
+		android:layout_marginTop="5dp"
+		android:background="@color/grey"
+		app:layout_constraintTop_toBottomOf="@id/bottomRelative2" />
+
+
+	<RelativeLayout
+		android:id="@+id/bottomRelative3"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="15dp"
+
+		android:padding="10dp"
+		app:layout_constraintTop_toBottomOf="@id/view2">
+
+		<ImageView
+			android:id="@+id/imgRupeeImage"
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:src="@drawable/rupee" />
+
+		<TextView
+			android:id="@+id/tvCash"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="40dp"
+			android:fontFamily="@font/productsansregular"
+			android:text="@string/cash"
+			android:textColor="@color/black"
+			android:textSize="15sp" />
+
+		<ImageView
+			android:layout_width="10dp"
+			android:layout_height="10dp"
+			android:layout_alignParentEnd="true"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="15dp"
+			android:src="@drawable/arrow" />
+
+	</RelativeLayout>
+
+	<androidx.appcompat.widget.AppCompatButton
+		android:id="@+id/btnRequestRide"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="15dp"
+		android:layout_marginTop="15dp"
+		android:background="@drawable/button_selected"
+		android:fontFamily="@font/productsansregular"
+		android:text="@string/request_ride"
+		android:textAllCaps="false"
+		android:textColor="@color/white"
+		android:textSize="15sp"
+		app:layout_constraintTop_toBottomOf="@id/bottomRelative3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

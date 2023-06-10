@@ -7,7 +7,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.gozipp.zumer.databinding.ActivityLoginBinding
 import com.gozipp.zumer.databinding.ActivityOnboardingBinding
 
-class Onboarding : AppCompatActivity() {
+class Onboarding : AppCompatActivity(), OnButtonClickListener {
     private lateinit var binding: ActivityOnboardingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,4 +32,9 @@ class Onboarding : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout,binding.viewPager){tab,pos->
         }.attach()
     }
+
+    override fun onButtonClick() {
+        finish()
+    }
+
 }

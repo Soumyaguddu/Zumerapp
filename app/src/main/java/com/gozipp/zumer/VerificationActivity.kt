@@ -5,9 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.gozipp.zumer.databinding.ActivityVerificationAcitivityBinding
+import com.gozipp.zumer.utills.Constant
+import com.gozipp.zumer.utills.Constant.LOCATION_CHECK
+import com.gozipp.zumer.utills.Constant.LOGIN_CHECK
 import com.gozipp.zumer.utills.KeyboardUtils
 import com.gozipp.zumer.utills.PreferenceHelper
 
@@ -20,7 +24,14 @@ class VerificationActivity : AppCompatActivity() {
 
         binding = ActivityVerificationAcitivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (intent != null && intent.extras != null) {
+           val  mobileNumber = intent.getStringExtra("mobileNumber").toString()
+            binding.tvMobileNumberView.text="We have sent an OTP to this $mobileNumber"
+        }
+
         setOtpFocus()
+
         binding.imgBack.setOnClickListener {
             finish()
         }
@@ -28,22 +39,29 @@ class VerificationActivity : AppCompatActivity() {
             KeyboardUtils.hideKeyboard(this, it)
         }
         binding.btnLogin.setOnClickListener {
-            PreferenceHelper.writeBooleanToPreference("loginCheck", false)
-            if (PreferenceHelper.getBooleanFromPreference("addUser"))
+
+
+
+            PreferenceHelper.writeBooleanToPreference(LOGIN_CHECK, false)
+
+            if (PreferenceHelper.getBooleanFromPreference(Constant.ADD_USER))
             {
-                if (PreferenceHelper.getBooleanFromPreference("locationCheck")) {
-                    val intent = Intent(this, LocationEnableActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                }
+                startActivity(Intent(this, AddUserActivity::class.java))
+
             }
             else
             {
-                startActivity(Intent(this, LocationEnableActivity::class.java))
-            }
+                if (PreferenceHelper.getBooleanFromPreference(LOCATION_CHECK)) {
+                    val intent = Intent(this, LocationEnableActivity::class.java)
+                    startActivity(intent)
+                } else {
 
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                }
+
+            }
+            finish()
 
 
         }

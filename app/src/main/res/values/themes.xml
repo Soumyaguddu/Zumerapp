@@ -29,11 +29,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Zumer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Zumer.AppBarOverlay" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <style name="Theme.Zumer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CircularProgressBarStyle" parent="android:Widget.ProgressBar">
         <item name="android:indeterminateDrawable">@drawable/custom_progress_bar</item>
     </style>
+    <style name="Style.NavBarView"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/productsansregular</item>
+    </style>
+
 </resources>

@@ -9,6 +9,8 @@ object Constant {
     const val KEY_USER_GOOGLE_GMAIL = "GOOGLEUSERGMAIL"
     const val USER_PHONE_LOGIN = "USER_PHONE_LOGIN"
     const val ADD_USER = "addUser"
+    const val LOCATION_CHECK = "locationCheck"
+    const val LOGIN_CHECK = "loginCheck"
 
 
 }

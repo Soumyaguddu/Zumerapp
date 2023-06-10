@@ -118,8 +118,41 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/or"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_14ssp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter email Id"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionDone"
+                android:maxLength="10"
+                android:padding="@dimen/_15sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="18sp"
+                android:textStyle="bold">
+
+                <requestFocus />
+            </EditText>
 
 
+        </FrameLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
