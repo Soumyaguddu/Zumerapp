@@ -6,11 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gozipp.zumer.AddPersonActivity
-import com.gozipp.zumer.LoginActivity
-import com.gozipp.zumer.R
+import com.gozipp.zumer.*
 import com.gozipp.zumer.databinding.FragmentRideBinding
 import com.gozipp.zumer.databinding.FragmentTripBinding
+import com.gozipp.zumer.utills.PreferenceHelper
 
 
 class TripFragment : Fragment() {
@@ -32,7 +31,10 @@ class TripFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnStarted.setOnClickListener {
-            startActivity(Intent(context, LoginActivity::class.java))
+
+            PreferenceHelper.writeBooleanToPreference("loginCheck", false)
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

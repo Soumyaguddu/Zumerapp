@@ -3,7 +3,6 @@ package com.gozipp.zumer
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.gozipp.zumer.databinding.ActivityMainBinding
 import com.gozipp.zumer.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.btnSignUp.setOnClickListener {
-            startActivity(Intent(this,VerificationAcitivity::class.java))
+            startActivity(Intent(this,VerificationActivity::class.java))
         }
     }
 }

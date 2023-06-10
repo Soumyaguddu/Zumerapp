@@ -15,13 +15,25 @@ import com.google.android.gms.auth.api.credentials.Credential
 import com.google.android.gms.auth.api.credentials.Credentials
 import com.google.android.gms.auth.api.credentials.CredentialsApi
 import com.google.android.gms.auth.api.credentials.HintRequest
-import com.gozipp.zumer.Onboarding.Onboarding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.gozipp.zumer.databinding.ActivityLoginBinding
+import com.gozipp.zumer.utills.Constant.KEY_DISPLAY_NAME
+import com.gozipp.zumer.utills.Constant.KEY_LOGIN_WITH_OAUTH
+import com.gozipp.zumer.utills.Constant.KEY_USER_GOOGLE_GMAIL
+import com.gozipp.zumer.utills.Constant.KEY_USER_GOOGLE_ID
+import com.gozipp.zumer.utills.Constant.KEY_USER_LOGGED_IN
 import com.gozipp.zumer.utills.KeyboardUtils
+import com.gozipp.zumer.utills.PreferenceHelper
+import java.util.*
 
 class LoginActivity : BaseActivity() {
     companion object {
         private val PERMISSIONS_REQUEST_READ_PHONE_STATE = 1
+        private val SIGN_IN_CODE = 10
     }
 
 
@@ -83,10 +95,18 @@ class LoginActivity : BaseActivity() {
             }
             checkLogin()
         }
+        binding.imgGoogle.setOnClickListener {
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build()
+
+
+            val googleSignInClient = GoogleSignIn.getClient(this, gso)
+            val intent: Intent = googleSignInClient.signInIntent
+            startActivityForResult(intent, SIGN_IN_CODE)
+        }
         requestHint()
     }
-
-
 
 
     private fun requestHint() {
@@ -107,6 +127,7 @@ class LoginActivity : BaseActivity() {
             e.printStackTrace()
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PERMISSIONS_REQUEST_READ_PHONE_STATE && resultCode == RESULT_OK) {
@@ -116,13 +137,13 @@ class LoginActivity : BaseActivity() {
 
             // set the received data t the text view
             credential?.apply {
-                Log.e("creddd",credential.id)
+                Log.e("creddd", credential.id)
 
                 val digitsOnly = credential.id.filter { it.isDigit() }
                 val transformedNumber = digitsOnly.substring(2)
                 // Store the digits in a variable
                 binding.etMobileNo.setText(transformedNumber)
-                binding.etMobileNo.setSelection( binding.etMobileNo.text!!.length)
+                binding.etMobileNo.setSelection(binding.etMobileNo.text!!.length)
                 checkLogin()
             }
         } else if (requestCode == PERMISSIONS_REQUEST_READ_PHONE_STATE && resultCode == CredentialsApi.ACTIVITY_RESULT_NO_HINTS_AVAILABLE) {
@@ -131,13 +152,58 @@ class LoginActivity : BaseActivity() {
             val imm: InputMethodManager =
                 getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(binding.etMobileNo, InputMethodManager.SHOW_IMPLICIT)
+        }
+        if (requestCode == SIGN_IN_CODE) {
+            var task: Task<GoogleSignInAccount>? = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task)
         } else {
             binding.etMobileNo.requestFocus()
         }
     }
+
+    private fun handleSignInResult(task: Task<GoogleSignInAccount>?) {
+        try {
+            if (task!!.isSuccessful) {
+                val account = task.getResult(ApiException::class.java)
+                PreferenceHelper.writeBooleanToPreference(KEY_LOGIN_WITH_OAUTH, true)
+                updatePreference(account!!)
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("UserName", account.displayName)
+                intent.putExtra("UserEmail", account.email)
+                intent.putExtra("UserPhoto", account.photoUrl.toString())
+                Toast.makeText(this, "Welcome ${account.displayName}", Toast.LENGTH_SHORT).show()
+                saveUser(account)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Login Error " + task.exception?.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        } catch (e: Exception) {
+
+        }
+    }
+
+    private fun updatePreference(account: GoogleSignInAccount) {
+        PreferenceHelper.writeBooleanToPreference(KEY_USER_LOGGED_IN, true)
+        PreferenceHelper.writeStringToPreference(KEY_USER_GOOGLE_ID, account!!.id)
+        PreferenceHelper.writeStringToPreference(KEY_DISPLAY_NAME, account.displayName)
+        PreferenceHelper.writeStringToPreference(KEY_USER_GOOGLE_GMAIL, account.email)
+    }
+
+
+    private fun saveUser(account: GoogleSignInAccount) {
+        val email = account.email!!
+     Toast.makeText(this,email,Toast.LENGTH_SHORT).show()
+
+    }
+
     private fun checkLogin() {
         binding.btnLogin.isSelected = true
-        startActivity(Intent(this, VerificationAcitivity::class.java))
+        startActivity(Intent(this, VerificationActivity::class.java))
     }
 
     fun isValidMobileNumber(number: String): Boolean {

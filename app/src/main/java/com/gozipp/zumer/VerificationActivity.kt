@@ -7,11 +7,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import com.gozipp.zumer.Onboarding.Onboarding
 import com.gozipp.zumer.databinding.ActivityVerificationAcitivityBinding
 import com.gozipp.zumer.utills.KeyboardUtils
+import com.gozipp.zumer.utills.PreferenceHelper
 
-class VerificationAcitivity : AppCompatActivity() {
+class VerificationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityVerificationAcitivityBinding
 
@@ -28,7 +28,24 @@ class VerificationAcitivity : AppCompatActivity() {
             KeyboardUtils.hideKeyboard(this, it)
         }
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, AddPersonActivity::class.java))
+            PreferenceHelper.writeBooleanToPreference("loginCheck", false)
+            if (PreferenceHelper.getBooleanFromPreference("addUser"))
+            {
+                if (PreferenceHelper.getBooleanFromPreference("locationCheck")) {
+                    val intent = Intent(this, LocationEnableActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            else
+            {
+                startActivity(Intent(this, LocationEnableActivity::class.java))
+            }
+
+
+
         }
     }
 
