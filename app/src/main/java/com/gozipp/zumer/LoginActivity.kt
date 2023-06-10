@@ -101,10 +101,7 @@ class LoginActivity : BaseActivity() {
                 Toast.makeText(this, "Please provide valid mobile no", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (binding.etEmail.text.toString().trim().isEmpty()&&binding.etMobileNo.text.toString().trim().isNotEmpty()) {
-                Toast.makeText(this, "Please provide your email id", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+
 
             checkLogin()
         }

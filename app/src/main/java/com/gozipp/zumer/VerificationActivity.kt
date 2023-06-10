@@ -46,17 +46,25 @@ class VerificationActivity : AppCompatActivity() {
 
             if (PreferenceHelper.getBooleanFromPreference(Constant.ADD_USER))
             {
-                startActivity(Intent(this, AddUserActivity::class.java))
+                val intent = Intent(this, AddUserActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(intent)
+
 
             }
             else
             {
                 if (PreferenceHelper.getBooleanFromPreference(LOCATION_CHECK)) {
                     val intent = Intent(this, LocationEnableActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent)
                 } else {
 
                     val intent = Intent(this, HomeActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent)
                 }
 
