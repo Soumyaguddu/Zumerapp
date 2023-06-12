@@ -40,10 +40,13 @@ import com.google.android.gms.maps.model.*
 import com.gozipp.CelebrateActivity
 import com.gozipp.views.DataParser
 import com.gozipp.views.LocationViewModel
+import com.gozipp.zumer.LocationEnableActivity
+import com.gozipp.zumer.Onboarding.OnButtonClickListener
 import com.gozipp.zumer.R
 import com.gozipp.zumer.databinding.FragmentHomeBinding
 import com.gozipp.zumer.fragments.BottomSheetFragment
 import com.gozipp.zumer.fragments.LocationSearchFragment
+import com.gozipp.zumer.navDrawerFragments.`interface`.CleanActivityFromFragmentInterface
 import com.gozipp.zumer.viewModel.AfterClickingRideNow
 import com.gozipp.zumer.viewModel.DistanceViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -64,7 +67,7 @@ class HomeFragment : Fragment() , OnMapReadyCallback, LocationListener,
     GoogleMap.OnCameraMoveListener, GoogleMap.OnCameraMoveStartedListener,
     GoogleMap.OnCameraIdleListener {
 
-
+    private var cleanActivityFromFragmentInterface: CleanActivityFromFragmentInterface? = null
     private var mMap: GoogleMap? = null
     private var toastCount = 0
     private var stepsRequiredToCompleteJourney = 0
@@ -124,6 +127,16 @@ class HomeFragment : Fragment() , OnMapReadyCallback, LocationListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is CleanActivityFromFragmentInterface) {
+            cleanActivityFromFragmentInterface = context
+        }
+    }
+    override fun onDetach() {
+        super.onDetach()
+        cleanActivityFromFragmentInterface = null
     }
 
     override fun onCreateView(
@@ -671,34 +684,7 @@ class HomeFragment : Fragment() , OnMapReadyCallback, LocationListener,
 
     private fun askForPermission() {
 
-        /* askPermission(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        ) {
-            getCurrentLocation()
 
-        }.onDeclined
-        { e ->
-            if (e.hasDenied()) {
-                e.denied.forEach {
-                }
-                AlertDialog.Builder(context as Activity)
-                    .setMessage("Please grant location permission to continue")
-                    .setPositiveButton("yes") { _, _ ->
-                        e.askAgain()
-
-                    }
-                    .setNegativeButton("no") { dialog, _ ->
-                        dialog.dismiss()
-
-                    }.show()
-            }
-            if (e.hasForeverDenied()) {
-                e.foreverDenied.forEach {
-                    e.goToSettings()
-                }
-            }
-        }*/
 
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -712,15 +698,18 @@ class HomeFragment : Fragment() , OnMapReadyCallback, LocationListener,
             // Permission already granted, proceed with your logic
             getCurrentLocation()
         } else {
+
+            cleanActivityFromFragmentInterface?.onRefresh()
+
             // Request permissions
-            ActivityCompat.requestPermissions(
+          /*  ActivityCompat.requestPermissions(
                 requireActivity(),
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ),
                 1
-            )
+            )*/
 
 
         }

@@ -1,12 +1,17 @@
 package com.gozipp.zumer
 
+import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -19,52 +24,121 @@ import java.util.*
 class LocationEnableActivity : AppCompatActivity() {
 
     val FINE_LOCATION_RO = 101
-
+    private val REQUEST_ENABLE_GPS = 1
 
     lateinit var locale: Locale
     private lateinit var binding: ActivityLocationEnableBinding
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLocationEnableBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableGps()
         buttonTaps()
     }
 
+
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun buttonTaps() {
         binding.btnAllowPermission.setOnClickListener {
+            enableGpsAndCheckPermissions()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun enableGpsAndCheckPermissions() {
+
+
+
+
+        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            // GPS is not enabled, prompt the user to enable it
+
+            try {
+                // For Android 6.0 and above, use the Settings API
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    startActivityForResult(intent, REQUEST_ENABLE_GPS)
+                }
+                else {
+                    // For earlier Android versions, try to enable GPS using different methods
+
+                    // Method 1: Enable GPS using the Secure settings
+                    try {
+                        val secureSettingsClass = Settings.Secure::class.java
+                        val secureSettingsMethod = secureSettingsClass.getMethod(
+                            "putInt",
+                            ContentResolver::class.java,
+                            String::class.java,
+                            Int::class.javaPrimitiveType
+                        )
+
+                        val contentResolver = applicationContext.contentResolver
+                        val locationMode: Int = Settings.Secure.getInt(
+                            contentResolver,
+                            Settings.Secure.LOCATION_MODE
+                        )
+
+                        if (locationMode != Settings.Secure.LOCATION_MODE_HIGH_ACCURACY) {
+                            secureSettingsMethod.invoke(
+                                null,
+                                contentResolver,
+                                Settings.Secure.LOCATION_MODE,
+                                Settings.Secure.LOCATION_MODE_HIGH_ACCURACY
+                            )
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        // Handle any exceptions that may occur during the process
+                    }
+
+                    // Method 2: Enable GPS by sending an Intent to the GPS settings activity
+                    try {
+                        val gpsIntent = Intent("android.location.GPS_ENABLED_CHANGE")
+                        gpsIntent.putExtra("enabled", true)
+                        sendBroadcast(gpsIntent)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        // Handle any exceptions that may occur during the process
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+
+            }
+
+
+        } else {
+            // GPS is already enabled
             checkForPermissions(
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
                 "location",
                 FINE_LOCATION_RO
             )
-            PreferenceHelper.writeBooleanToPreference(LOCATION_CHECK, false)
         }
-
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun checkForPermissions(permission: String, name: String, requestCode: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            when {
-                ContextCompat.checkSelfPermission(
-                    applicationContext,
-                    permission
-                ) == PackageManager.PERMISSION_GRANTED -> {
-//                    Toast.makeText(
-//                        applicationContext,
-//                        "$name permission granted",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-
-                }
-                shouldShowRequestPermissionRationale(permission) -> showDialog(
-                    permission,
-                    name,
-                    requestCode
-                )
-                else -> ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+        if (ContextCompat.checkSelfPermission(
+                applicationContext,
+                permission
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            PreferenceHelper.writeBooleanToPreference(LOCATION_CHECK, false)
+            // Permission is already granted
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        } else {
+            if (shouldShowRequestPermissionRationale(permission)) {
+                // Show rationale dialog
+                showDialog(permission, name, requestCode)
+            } else {
+                // Request permission directly
+                ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
             }
         }
     }
@@ -81,7 +155,7 @@ class LocationEnableActivity : AppCompatActivity() {
                     .show()
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                 val uri = Uri.fromParts("package", packageName, null)
-                intent.setData(uri)
+                intent.data = uri
                 startActivity(intent)
             } else {
                 Toast.makeText(
@@ -90,8 +164,7 @@ class LocationEnableActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 )
                     .show()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
         }
@@ -99,7 +172,6 @@ class LocationEnableActivity : AppCompatActivity() {
             FINE_LOCATION_RO -> innerCheck("location")
         }
     }
-
 
     private fun showDialog(permission: String, name: String, requestCode: Int) {
         val builder = AlertDialog.Builder(this)
@@ -115,7 +187,79 @@ class LocationEnableActivity : AppCompatActivity() {
         }
         val dialog = builder.create()
         dialog.show()
-
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_ENABLE_GPS && resultCode == Activity.RESULT_OK) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun enableGps() {
+        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            try {
+                // For Android 6.0 and above, use the Settings API
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    startActivityForResult(intent, REQUEST_ENABLE_GPS)
+                }
+                else {
+                    // For earlier Android versions, try to enable GPS using different methods
+
+                    // Method 1: Enable GPS using the Secure settings
+                    try {
+                        val secureSettingsClass = Settings.Secure::class.java
+                        val secureSettingsMethod = secureSettingsClass.getMethod(
+                            "putInt",
+                            ContentResolver::class.java,
+                            String::class.java,
+                            Int::class.javaPrimitiveType
+                        )
+
+                        val contentResolver = applicationContext.contentResolver
+                        val locationMode: Int = Settings.Secure.getInt(
+                            contentResolver,
+                            Settings.Secure.LOCATION_MODE
+                        )
+
+                        if (locationMode != Settings.Secure.LOCATION_MODE_HIGH_ACCURACY) {
+                            secureSettingsMethod.invoke(
+                                null,
+                                contentResolver,
+                                Settings.Secure.LOCATION_MODE,
+                                Settings.Secure.LOCATION_MODE_HIGH_ACCURACY
+                            )
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        // Handle any exceptions that may occur during the process
+                    }
+
+                    // Method 2: Enable GPS by sending an Intent to the GPS settings activity
+                    try {
+                        val gpsIntent = Intent("android.location.GPS_ENABLED_CHANGE")
+                        gpsIntent.putExtra("enabled", true)
+                        sendBroadcast(gpsIntent)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        // Handle any exceptions that may occur during the process
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+
+            }
+        } else {
+            // GPS is already enabled
+            // Start your GPS-related operations here
+        }
+    }
+
+
 
 }

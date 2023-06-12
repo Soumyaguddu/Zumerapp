@@ -1,6 +1,7 @@
 package com.gozipp.zumer
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
@@ -11,11 +12,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 import com.gozipp.zumer.databinding.ActivityHomeBinding
+import com.gozipp.zumer.navDrawerFragments.`interface`.CleanActivityFromFragmentInterface
 import com.gozipp.zumer.utills.Constant
 import com.gozipp.zumer.utills.PreferenceHelper
 import de.hdodenhof.circleimageview.CircleImageView
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener ,CleanActivityFromFragmentInterface{
     private lateinit var binding: ActivityHomeBinding
 
     @SuppressLint("SetTextI18n")
@@ -74,5 +76,10 @@ binding.menu.setOnClickListener {
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         TODO("Not yet implemented")
+    }
+
+    override fun onRefresh() {
+        startActivity(Intent(this,LocationEnableActivity::class.java))
+        finish()
     }
 }
