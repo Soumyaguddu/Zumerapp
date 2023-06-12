@@ -24,12 +24,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import androidx.core.location.LocationManagerCompat.getCurrentLocation
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -39,15 +37,15 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
+import com.gozipp.CelebrateActivity
 import com.gozipp.views.DataParser
+import com.gozipp.views.LocationViewModel
 import com.gozipp.zumer.R
 import com.gozipp.zumer.databinding.FragmentHomeBinding
 import com.gozipp.zumer.fragments.BottomSheetFragment
+import com.gozipp.zumer.fragments.LocationSearchFragment
 import com.gozipp.zumer.viewModel.AfterClickingRideNow
 import com.gozipp.zumer.viewModel.DistanceViewModel
-import com.gozipp.zumer.viewModel.LocationViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -159,7 +157,7 @@ class HomeFragment : Fragment() , OnMapReadyCallback, LocationListener,
         mapView.onCreate(mapViewBundle)
         mapView.getMapAsync(this)
 
-      /*  binding. tvEnterDestination.setOnClickListener {
+        binding. tvEnterDestination.setOnClickListener {
             val ft: FragmentTransaction = requireFragmentManager().beginTransaction()
             ft.add(
                 R.id.fragmentContainerView,
@@ -167,7 +165,7 @@ class HomeFragment : Fragment() , OnMapReadyCallback, LocationListener,
                 "LocationSearchFragment"
             ).addToBackStack("LocationSearchFragment")
             ft.commit()
-        }*/
+        }
 
         distanceViewModel = ViewModelProviders.of(this).get(DistanceViewModel::class.java)
         afterClickingRideNow = ViewModelProviders.of(this).get(AfterClickingRideNow::class.java)
@@ -315,7 +313,7 @@ class HomeFragment : Fragment() , OnMapReadyCallback, LocationListener,
         latIsLowLngIsHigh = false
         latIsHighLngIsLow = false
         showJouneyCompleteNotification()
-        //startActivity(Intent(context, LetsCelebrate::class.java))
+        startActivity(Intent(context, CelebrateActivity::class.java))
     }
 
     private fun startTheJourneyFromLatHighLngLow() {

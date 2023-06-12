@@ -69,12 +69,16 @@ complete your account</string>
 	<string name="apply_coupon_code">Apply Coupon Code</string>
 	<string name="cash">Cash</string>
 	<string name="request_ride">Request Ride</string>
-	<string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCv_5zK9gY5rZfL36LspmVQIBXJ3wSrAzQ</string>
+	<string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDGTNMJhlUjoSOggpK3Gsvkm5aRUXtOUCg</string>
 	<string name="set_your_pickup_location_of_where_you_want_to_go">Set your pickup location of where you want to go.</string>
 	<string name="set_destination">Set Destination</string>
 	<string name="enjoy_your_trip">Enjoy Your Trip</string>
 	<string name="you_re_all_set_enjoy_your_trip_with_safety_comfort_and_security">You’re all set. Enjoy your trip with safety, comfort and security.</string>
 	<string name="add_dropoff_location_or_skip_it_if_you_are_unsure_select_vehicle_type_as_your_ride_and_book_it">Add dropoff location or skip it if you are unsure. Select vehicle type as your ride and book it.</string>
 	<string name="book_a_ride">Book a Ride</string>
+	<string name="ok">OK</string>
+	<string name="your_ride_is_complete_don_t_forget_to_rate_us_on_playstore">Your ride is complete! Don\'t forget to rate us on playstore</string>
+	<string name="search_drop_location">Search Destination</string>
+	<string name="let_s_go">Let\'s Go</string>
 
 </resources>

@@ -91,10 +91,19 @@ class LoginActivity : BaseActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            if (binding.etMobileNo.text.toString().trim().isEmpty()&&binding.etEmail.text.toString().trim().isNotEmpty()) {
+            if (binding.etMobileNo.text.toString().trim().isEmpty() && binding.etEmail.text.toString().trim().isEmpty())
+            {
+                Toast.makeText(this, "Please provide your mobile no or email id", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else if (binding.etMobileNo.text.toString().trim().isEmpty())
+            {
                 Toast.makeText(this, "Please provide your mobile no", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            } else if (binding.etMobileNo.text.toString().length < 10&&binding.etEmail.text.toString().trim().isNotEmpty()) {
+            } else if (binding.etMobileNo.text.toString().length < 10 && binding.etEmail.text.toString()
+                    .trim().isNotEmpty()
+            )
+            {
                 Toast.makeText(this, "Please provide 10 digit mobile no", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else if (!isValidMobileNumber(binding.etMobileNo.text.toString())) {
@@ -207,7 +216,7 @@ class LoginActivity : BaseActivity() {
 
     private fun saveUser(account: GoogleSignInAccount) {
         val email = account.email!!
-     Toast.makeText(this,email,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, email, Toast.LENGTH_SHORT).show()
 
     }
 
@@ -215,10 +224,9 @@ class LoginActivity : BaseActivity() {
         binding.btnLogin.isSelected = true
 
         val i = Intent(this, VerificationActivity::class.java).apply {
-            if (binding.etEmail.text.toString().isEmpty()){
+            if (binding.etEmail.text.toString().isEmpty()) {
                 putExtra("mobileNumber", binding.etMobileNo.text.toString())
-            }
-            else{
+            } else {
                 putExtra("mobileNumber", binding.etEmail.text.toString())
             }
 
