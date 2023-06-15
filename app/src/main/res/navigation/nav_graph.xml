@@ -8,6 +8,15 @@
 	<fragment
 		android:id="@+id/homeFragment"
 		android:name="com.gozipp.zumer.navDrawerFragments.HomeFragment"
-		android:label="fragment_home"
-		tools:layout="@layout/fragment_home" />
+		android:label="Home"
+		tools:layout="@layout/fragment_home" >
+		<action
+			android:id="@+id/action_homeFragment_to_settingsFragment"
+			app:destination="@id/settingsFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/settingsFragment"
+		tools:layout="@layout/fragment_settings"
+		android:name="com.gozipp.zumer.navDrawerFragments.SettingsFragment"
+		android:label="Settings" />
 </navigation>

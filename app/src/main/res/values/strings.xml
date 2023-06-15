@@ -80,5 +80,36 @@ complete your account</string>
 	<string name="your_ride_is_complete_don_t_forget_to_rate_us_on_playstore">Your ride is complete! Don\'t forget to rate us on playstore</string>
 	<string name="search_drop_location">Search Destination</string>
 	<string name="let_s_go">Let\'s Go</string>
+	<!-- Preference Titles -->
+	<string name="messages_header">Messages</string>
+	<string name="sync_header">Sync</string>
+
+	<!-- Messages Preferences -->
+	<string name="signature_title">Your signature</string>
+	<string name="reply_title">Default reply action</string>
+
+	<!-- Sync Preferences -->
+	<string name="sync_title">Sync email periodically</string>
+	<string name="attachment_title">Download incoming attachments</string>
+	<string name="attachment_summary_on">Automatically download attachments for incoming emails
+	</string>
+	<string name="attachment_summary_off">Only download attachments when manually requested</string>
+	<string name="general">General</string>
+	<string name="others">Others</string>
+	<string name="profile">Profile</string>
+	<string name="favorites">Favorites</string>
+	<string name="app_language">App Language</string>
+	<string name="english">English</string>
+	<string name="app_shortcuts">App Shortcuts</string>
+	<string name="Enter_Mobile_Number">Enter Mobile Number</string>
+	<string name="Manage_favorite_locations">Manage favorite locations</string>
+	<string name="Preferences">Preferences</string>
+	<string name="Manage_preferences">Manage preferences</string>
+	<string name="create_shortcuts_on_home_launcher">Create shortcuts on home launcher</string>
+	<string name="about">About</string>
+	<string name="_5_5_27">5.5.27</string>
+	<string name="subscribe_to_beta">Subscribe to Beta</string>
+	<string name="get_early_access_to_latest_features">Get early access to latest features</string>
+	<string name="logout">Log Out</string>
 
 </resources>

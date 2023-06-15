@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -74,12 +75,38 @@ binding.menu.setOnClickListener {
         }
         return super.onOptionsItemSelected(item)
     }
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        TODO("Not yet implemented")
-    }
+
 
     override fun onRefresh() {
         startActivity(Intent(this,LocationEnableActivity::class.java))
         finish()
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.nav_home -> {
+                val navOptions = NavOptions.Builder().setPopUpTo(R.id.homeFragment, true).build()
+                Navigation.findNavController(this, R.id.fragmentContainerView)
+                    .navigate(R.id.homeFragment, null, navOptions)
+            }
+
+            R.id.nav_settings -> {
+                if (isValidDestination(R.id.settingsFragment)) {
+                    Navigation.findNavController(this, R.id.fragmentContainerView)
+                        .navigate(R.id.settingsFragment)
+                }
+            }
+
+        }
+
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+
+        return true
+    }
+
+    private fun isValidDestination(destination: Int): Boolean {
+        return destination != Navigation.findNavController(this, R.id.fragmentContainerView)
+            .currentDestination?.id
     }
 }
