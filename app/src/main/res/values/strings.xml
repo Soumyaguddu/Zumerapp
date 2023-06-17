@@ -111,5 +111,10 @@ complete your account</string>
 	<string name="subscribe_to_beta">Subscribe to Beta</string>
 	<string name="get_early_access_to_latest_features">Get early access to latest features</string>
 	<string name="logout">Log Out</string>
+	<string name="payment">Payment</string>
+	<string name="pay">Pay</string>
+	<string name="link">Link</string>
+	<string name="Personal_Wallet">Wallet</string>
+	<string name="bike_taxi">Electric Taxi</string>
 
 </resources>

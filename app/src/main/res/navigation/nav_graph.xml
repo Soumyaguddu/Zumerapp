@@ -19,4 +19,14 @@
 		tools:layout="@layout/fragment_settings"
 		android:name="com.gozipp.zumer.navDrawerFragments.SettingsFragment"
 		android:label="Settings" />
+	<fragment
+		android:id="@+id/paymentFragment"
+		tools:layout="@layout/fragment_payment"
+		android:name="com.gozipp.zumer.navDrawerFragments.PaymentFragment"
+		android:label="Payment" />
+	<fragment
+		android:id="@+id/myRidesFragment"
+		tools:layout="@layout/fragment_my_rides"
+		android:name="com.gozipp.zumer.navDrawerFragments.MyRidesFragment"
+		android:label="My Rides" />
 </navigation>

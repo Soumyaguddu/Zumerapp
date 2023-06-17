@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white"
+	>
+	<LinearLayout
+		android:id="@+id/llHeader"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/tvGeneral"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:visibility="invisible"
+			android:fontFamily="@font/opensansbold"
+			android:text="My Rides"
+			android:textColor="@color/black"
+			android:textStyle="bold"
+			android:textSize="@dimen/_18ssp"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_baseline_filter_list_24"
+			android:layout_gravity="center_vertical"
+			android:layout_marginEnd="@dimen/_10sdp"
+			android:layout_marginStart="@dimen/_5sdp"/>
+
+	</LinearLayout>
+
+
+
+<LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_margin="@dimen/_5sdp"
+	android:layout_below="@id/llHeader"
+	android:orientation="vertical">
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cardView2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/cardView1"
+		android:layout_margin="10dp"
+		app:cardElevation="15dp"
+		android:background="@drawable/edittext_bg"
+		app:cardCornerRadius="10dp">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp">
+
+			<TextView
+				android:id="@+id/tvBikeRide2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/productsansregular"
+				android:text="@string/bike_taxi" />
+
+			<TextView
+				android:id="@+id/tvToday"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@id/tvBikeRide2"
+				android:fontFamily="@font/productsansregular"
+				android:text="Today" />
+
+			<TextView
+				android:id="@+id/tvRideStatus"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvBikeRide2"
+				android:fontFamily="@font/productsansregular"
+				android:text="Completed"
+				android:textColor="@color/Green"
+				android:textSize="15sp" />
+
+			<TextView
+				android:id="@+id/tvIndianRupeee3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="25dp"
+				android:layout_marginTop="7dp"
+				android:layout_toStartOf="@id/tvTotalRupeee2"
+				android:fontFamily="@font/indianrupee"
+				android:text="`"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvTotalRupeee2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentEnd="true"
+				android:layout_marginEnd="15dp"
+				android:fontFamily="@font/opensansregular"
+				android:text="38"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvCashh2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvIndianRupeee3"
+				android:layout_alignParentEnd="true"
+				android:layout_marginEnd="10dp"
+				android:fontFamily="@font/productsansregular"
+				android:text="Cash"
+				android:textColor="@color/black"
+				android:textSize="15sp" />
+
+			<View
+				android:id="@+id/view10"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_below="@id/tvCashh2"
+				android:layout_marginTop="10dp"
+				android:background="@color/grey" />
+
+			<ImageView
+				android:id="@+id/imgGreenDot2"
+				android:layout_width="10dp"
+				android:layout_height="10dp"
+				android:layout_below="@id/view10"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="15dp"
+				android:src="@drawable/green_circle" />
+
+			<TextView
+				android:id="@+id/tvSource2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/view10"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="10dp"
+				android:layout_toEndOf="@id/imgGreenDot2"
+				android:fontFamily="@font/productsansregular"
+				android:text="Park street"
+				android:textColor="@color/black" />
+
+			<ImageView
+				android:id="@+id/imgRedDot2"
+				android:layout_width="10dp"
+				android:layout_height="10dp"
+				android:layout_below="@id/imgGreenDot2"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="20dp"
+				android:src="@drawable/red_circle" />
+
+			<TextView
+				android:id="@+id/tvDestination2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvSource2"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="10dp"
+				android:layout_toEndOf="@id/imgGreenDot2"
+				android:fontFamily="@font/productsansregular"
+				android:text="Dalhousi"
+				android:textColor="@color/black" />
+
+		</RelativeLayout>
+
+	</androidx.cardview.widget.CardView>
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cardView1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+
+		android:layout_margin="10dp"
+		android:background="@drawable/edittext_bg"
+		app:cardElevation="15dp"
+		app:cardCornerRadius="10dp">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp">
+
+			<TextView
+				android:id="@+id/tvBikeRide"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/productsansregular"
+				android:text="@string/bike_taxi" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@id/tvBikeRide"
+				android:fontFamily="@font/productsansregular"
+				android:text="9 Days ago" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvBikeRide"
+				android:fontFamily="@font/productsansregular"
+				android:text="Cancelled"
+				android:textColor="@color/Red"
+				android:textSize="15sp" />
+
+			<TextView
+				android:id="@+id/tvIndianRupeee"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="25dp"
+				android:layout_marginTop="7dp"
+				android:layout_toStartOf="@id/tvTotalRupeee"
+				android:fontFamily="@font/indianrupee"
+				android:text="`"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvTotalRupeee"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentEnd="true"
+				android:layout_marginEnd="15dp"
+				android:fontFamily="@font/opensansregular"
+				android:text="0"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvCashh"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvIndianRupeee"
+				android:layout_alignParentEnd="true"
+				android:layout_marginEnd="10dp"
+				android:fontFamily="@font/productsansregular"
+				android:text="@string/cash"
+				android:textColor="@color/black"
+				android:textSize="15sp" />
+
+			<View
+				android:id="@+id/view9"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_below="@id/tvCashh"
+				android:layout_marginTop="10dp"
+				android:background="@color/grey" />
+
+			<ImageView
+				android:id="@+id/imgGreenDot"
+				android:layout_width="10dp"
+				android:layout_height="10dp"
+				android:layout_below="@id/view9"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="15dp"
+				android:src="@drawable/green_circle" />
+
+			<TextView
+				android:id="@+id/tvSource"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/view9"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="10dp"
+				android:layout_toEndOf="@id/imgGreenDot"
+				android:fontFamily="@font/productsansregular"
+				android:text="Kolkata"
+				android:textColor="@color/black" />
+
+			<ImageView
+				android:id="@+id/imgRedDot"
+				android:layout_width="10dp"
+				android:layout_height="10dp"
+				android:layout_below="@id/imgGreenDot"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="20dp"
+				android:src="@drawable/red_circle" />
+
+			<TextView
+				android:id="@+id/tvDestination"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvSource"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="10dp"
+				android:layout_toEndOf="@id/imgGreenDot"
+				android:fontFamily="@font/productsansregular"
+				android:text="Santragachi"
+				android:textColor="@color/black" />
+		</RelativeLayout>
+
+	</androidx.cardview.widget.CardView>
+	<androidx.cardview.widget.CardView
+
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+
+		android:layout_margin="10dp"
+		android:background="@drawable/edittext_bg"
+		app:cardElevation="15dp"
+		app:cardCornerRadius="10dp">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp">
+
+			<TextView
+				android:id="@+id/tvBikeRideS"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/productsansregular"
+				android:text="@string/bike_taxi" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@id/tvBikeRideS"
+				android:fontFamily="@font/productsansregular"
+				android:text="9 Days ago" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvBikeRideS"
+				android:fontFamily="@font/productsansregular"
+				android:text="Completed"
+				android:textColor="@color/Green"
+				android:textSize="15sp" />
+
+			<TextView
+				android:id="@+id/tvIndianRupeees"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="25dp"
+				android:layout_marginTop="7dp"
+				android:layout_toStartOf="@id/tvTotalRupeees"
+				android:fontFamily="@font/indianrupee"
+				android:text="`"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvTotalRupeees"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentEnd="true"
+				android:layout_marginEnd="15dp"
+				android:fontFamily="@font/opensansregular"
+				android:text="50"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvCashhs"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvIndianRupeees"
+				android:layout_alignParentEnd="true"
+				android:layout_marginEnd="10dp"
+				android:fontFamily="@font/productsansregular"
+				android:text="UPI"
+				android:textColor="@color/black"
+				android:textSize="15sp" />
+
+			<View
+				android:id="@+id/view9s"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_below="@id/tvCashhs"
+				android:layout_marginTop="10dp"
+				android:background="@color/grey" />
+
+			<ImageView
+				android:id="@+id/imgGreenDots"
+				android:layout_width="10dp"
+				android:layout_height="10dp"
+				android:layout_below="@id/view9s"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="15dp"
+				android:src="@drawable/green_circle" />
+
+			<TextView
+				android:id="@+id/tvSources"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/view9s"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="10dp"
+				android:layout_toEndOf="@id/imgGreenDots"
+				android:fontFamily="@font/productsansregular"
+				android:text="Ramrajatala"
+				android:textColor="@color/black" />
+
+			<ImageView
+				android:id="@+id/imgRedDots"
+				android:layout_width="10dp"
+				android:layout_height="10dp"
+				android:layout_below="@id/imgGreenDots"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="20dp"
+				android:src="@drawable/red_circle" />
+
+			<TextView
+				android:id="@+id/tvDestinations"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/tvSources"
+				android:layout_marginStart="15dp"
+				android:layout_marginTop="10dp"
+				android:layout_toEndOf="@id/imgGreenDots"
+				android:fontFamily="@font/productsansregular"
+				android:text="Behala"
+				android:textColor="@color/black" />
+		</RelativeLayout>
+
+	</androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+
+
+
+
+</RelativeLayout>

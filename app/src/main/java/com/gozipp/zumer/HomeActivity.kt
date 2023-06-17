@@ -2,11 +2,14 @@ package com.gozipp.zumer
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.iterator
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -26,7 +29,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setSupportActionBar(binding.myToolbar)
+        setSupportActionBar(binding.myToolbar)
 
 
         val navHostFragment =
@@ -40,6 +43,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
+
+        binding.navView.itemIconTintList = null
+
+
+        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
+        NavigationUI.setupWithNavController(binding.navView, navController)
+
         val nav_profile = hView.findViewById<CircleImageView>(R.id.ivProfile)
 
         binding.navView.setNavigationItemSelectedListener(this)
@@ -50,11 +60,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             nav_user.text = name.trim()+"\n"+phone.trim()
         }
 
-binding.menu.setOnClickListener {
+/*binding.menu.setOnClickListener {
 
 
     binding.drawerLayout.openDrawer(GravityCompat.START)
-}
+}*/
 
     }
     override fun onSupportNavigateUp(): Boolean {
@@ -95,6 +105,18 @@ binding.menu.setOnClickListener {
                 if (isValidDestination(R.id.settingsFragment)) {
                     Navigation.findNavController(this, R.id.fragmentContainerView)
                         .navigate(R.id.settingsFragment)
+                }
+            }
+            R.id.nav_payment -> {
+                if (isValidDestination(R.id.paymentFragment)) {
+                    Navigation.findNavController(this, R.id.fragmentContainerView)
+                        .navigate(R.id.paymentFragment)
+                }
+            }
+            R.id.nav_myRides -> {
+                if (isValidDestination(R.id.myRidesFragment)) {
+                    Navigation.findNavController(this, R.id.fragmentContainerView)
+                        .navigate(R.id.myRidesFragment)
                 }
             }
 

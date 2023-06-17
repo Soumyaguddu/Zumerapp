@@ -7,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import com.gozipp.zumer.R
-import com.gozipp.zumer.databinding.FragmentHomeBinding
-import com.gozipp.zumer.databinding.FragmentSettingsBinding
 
 
-class SettingsFragment : Fragment() {
+class PaymentFragment : Fragment() {
 
-    private var _binding : FragmentSettingsBinding? = null
-    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,13 +21,13 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentSettingsBinding.inflate(inflater,container,false)
+        val view = inflater.inflate(R.layout.fragment_payment, container, false)
         val toolbar = activity?.findViewById<Toolbar>(R.id.my_toolbar)
 
         // Set the title for the Toolbar
-        toolbar?.title = "Settings"
-        return binding.root
+        toolbar?.title = "Payment"
+        // Inflate the layout for this fragment
+        return view
     }
 
 

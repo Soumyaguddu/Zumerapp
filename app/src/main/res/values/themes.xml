@@ -40,5 +40,8 @@
         parent="Widget.Design.BottomNavigationView">
         <item name="fontFamily">@font/productsansregular</item>
     </style>
+    <style name="ToolbarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/opensansbold</item>
+    </style>
 
 </resources>

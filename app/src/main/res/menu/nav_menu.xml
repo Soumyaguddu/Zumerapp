@@ -25,17 +25,17 @@
 			android:icon="@drawable/ic__03_my_rides"
 			android:title="@string/my_rides" />
 
-		<item
+	<!--	<item
 			android:id="@+id/nav_inviteFriends"
 			android:fontFamily="@font/productsansregular"
 			android:icon="@drawable/ic__06_invite_friends"
-			android:title="@string/invite_friends" />
+			android:title="@string/invite_friends" />-->
 
-		<item
+		<!--<item
 			android:id="@+id/nav_powerPass"
 			android:fontFamily="@font/productsansregular"
 			android:icon="@drawable/ic__04_power_pass"
-			android:title="@string/power_pass" />
+			android:title="@string/power_pass" />-->
 
 		<item
 			android:id="@+id/nav_notifications"
