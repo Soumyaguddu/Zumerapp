@@ -232,6 +232,7 @@ class LoginActivity : BaseActivity() {
 
         }
         startActivity(i)
+        finish()
 
     }
 

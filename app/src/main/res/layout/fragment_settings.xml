@@ -16,10 +16,12 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="15dp"
 			android:layout_marginTop="10dp"
-			android:fontFamily="@font/productsansregular"
-			android:text="@string/general"
+			android:fontFamily="@font/opensansbold"
+			android:text="@string/settings"
+			android:visibility="gone"
 			android:textColor="@color/black"
-			android:textSize="14sp"
+			android:textStyle="bold"
+			android:textSize="@dimen/_18ssp"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
@@ -339,6 +341,7 @@
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
 		</androidx.cardview.widget.CardView>
+
 
 
 	</androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,7 @@ class VerificationActivity : AppCompatActivity() {
         setOtpFocus()
 
         binding.imgBack.setOnClickListener {
+           startActivity(Intent(this,LoginActivity::class.java))
             finish()
         }
         binding.llView.setOnClickListener {
